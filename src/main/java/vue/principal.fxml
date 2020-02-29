@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="bp_principal" prefHeight="470.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.ControleurPrincipal">
+   <top>
+      <Pane prefHeight="43.0" prefWidth="1190.0" style="-fx-background-color: #ACACAC;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="textfield_ip" layoutX="38.0" layoutY="9.0" prefHeight="25.0" prefWidth="270.0" style="-fx-background-color: white;" />
+            <Button fx:id="bt_connection" onAction="#connection" layoutX="657.0" layoutY="6.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="79.0" text="Connection" />
+            <Label layoutX="14.0" layoutY="9.0" text="IP" textAlignment="CENTER">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="333.0" layoutY="9.0" text="Port" textAlignment="CENTER">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textfield_port" layoutX="370.0" layoutY="9.0" prefHeight="25.0" prefWidth="270.0" style="-fx-background-color: white;" />
+         </children>
+      </Pane>
+   </top>
+   <bottom>
+      <Pane prefHeight="13.0" prefWidth="773.0" style="-fx-background-color: #ACACAC;" BorderPane.alignment="CENTER" />
+   </bottom>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D1D1D1;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="textfield_verbe" layoutX="108.0" layoutY="65.0" prefHeight="39.0" prefWidth="271.0" promptText=" Entrez un verbe à l'infinitif" style="-fx-background-color: white;">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <ComboBox fx:id="combobox_temps" layoutX="393.0" layoutY="65.0" prefHeight="39.0" prefWidth="150.0" style="-fx-background-color: #ACACAC;" />
+            <Button fx:id="bt_conjuguer" onAction="#conjuguer" layoutX="556.0" layoutY="65.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="110.0" text="Conjuguer">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Text layoutX="284.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Conjuguator">
+               <font>
+                  <Font name="Yu Gothic UI Light" size="39.0" />
+               </font>
+            </Text>
+            <TextArea layoutX="284.0" layoutY="118.0" prefHeight="224.0" prefWidth="274.0" style="-fx-background-color: white;" text="hh&#10;hh&#10;hh&#10;hh&#10;hh&#10;hh">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextArea>
+            <Text layoutX="237.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="   Je" wrappingWidth="46.55859375">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="239.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="  Tu" wrappingWidth="46.55859375">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="195.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="    Il/Elle" wrappingWidth="87.55859375">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="209.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="  Nous" wrappingWidth="74.55859375">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="221.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Vous" wrappingWidth="62.55859375">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="182.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="   Ils/Elles" wrappingWidth="105.55859375">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Button fx:id="bt_test" layoutX="579.0" layoutY="296.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="64.0" text="Test">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
