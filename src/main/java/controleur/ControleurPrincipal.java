@@ -8,9 +8,7 @@ import rmi.rmiClientProject.Client;
 public class ControleurPrincipal {
 
 	@FXML
-	private TextField textfield_ip;
-	@FXML
-	private TextField textfield_port;
+	private TextField textfield_ip_port;
 	@FXML
 	private TextField textfield_verbe;
 	@FXML
@@ -18,9 +16,8 @@ public class ControleurPrincipal {
 	
 	@FXML
 	public void connection() {
-		Client.connection(
-				textfield_ip.getText(),
-				textfield_port.getText());
+		String[] res = textfield_ip_port.getText().trim().split(":");
+		Client.connection(res[0], res[1]);
 	}
 	
 	@FXML
