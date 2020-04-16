@@ -1,37 +1,43 @@
 package rmi.rmiClientProject;
 
-import java.rmi.Naming;
-import java.rmi.Remote;
-import java.util.ArrayList;
-import java.util.Scanner;
-
-import interfaces.Information;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
- * Hello world!
- *
+ * Main
  */
-public class App 
+public class App extends Application
 {
     public static void main( String[] args )
     {
-        System.out.println( "Lancement du client!" );
-        Scanner sc = new Scanner (System.in);
-		
-		System.out.println("Veuillez entrer un mot :");
-		String str = sc.nextLine();
-        try {
-			Remote r = Naming.lookup("rmi://192.168.0.17/TestRMI");
-			System.out.println(r);
-			if (r instanceof Information)
-			{
-				ArrayList<String> verbeConj = ((Information) r).getTraduction(str, "futur");
-				verbeConj.forEach(s -> System.out.println(s));
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
+    	launch(args);
+    }
+    
+    /**
+     * Creer et lance l' interface graphique (IHM)
+     * @param windows 
+     */
+	@Override
+	public void start(Stage windows){
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/principal.fxml"));
+			Parent root = loader.load();
+			Scene scene = new Scene(root,740,450);
+			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			windows.setMaxWidth(790);
+			windows.setMaxHeight(490);
+			
+			windows.setMinWidth(740);
+			windows.setMinHeight(450);
+			
+			windows.setTitle("Client : Conjugue Verbe");
+			windows.setScene(scene);
+			windows.show();
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
-        System.out.println("Fin du client");
-    }
+	}
 }
