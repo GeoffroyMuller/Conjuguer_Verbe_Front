@@ -3,8 +3,16 @@ package interfaces;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
-public interface Information extends Remote{
+public interface IVerbe extends Remote{
+	
+	public List<String> conjuguerFutur(String verbe) throws RemoteException;
+	
+	public List<String> conjuguerPresent(String verbe) throws RemoteException;
+	
+	public List<String> conjuguerPasseComp(String verbe) throws RemoteException;
+	
 	public String getInformation() throws RemoteException;
 
 	public String getManger(String verbe) throws RemoteException;

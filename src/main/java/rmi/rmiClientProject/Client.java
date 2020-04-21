@@ -3,7 +3,7 @@ package rmi.rmiClientProject;
 import java.rmi.Naming;
 import java.rmi.Remote;
 
-import interfaces.Information;
+import interfaces.IVerbe;
 
 /**
  * Client Singleton
@@ -32,11 +32,11 @@ public class Client {
 	public static void connection(String ip, String port) {
 		System.out.println( "Lancement du client!" );
 		try {
-			Remote r = Naming.lookup("rmi://"+ip+":"+port+"/TestRMI");
+			Remote r = Naming.lookup("rmi://192.168.0.17/Conjuguaison");
 			System.out.println(r);
-			if (r instanceof Information)
+			if (r instanceof IVerbe)
 			{
-				String s = ((Information) r).getInformation();
+				String s = ((IVerbe) r).getInformation();
 				System.out.println("chaine renvoyee = "+s);
 			}
 		} catch (Exception e) {
@@ -45,4 +45,22 @@ public class Client {
 		}
 		System.out.println("Fin du client");
 	}
+	
+//	/**
+//	 * Permet d'effectuer des test
+//	 */
+//	public static void testClient() {
+//		System.out.println( "Lancement du client!" );
+//		try {
+//			Remote r = Naming.lookup("rmi://192.168.0.17:1098/client");
+//			IClient ibanque = ((IClient)r).connexionClient("root", "root");
+//			IPanier ipanier = ibanque.recupererPanier();
+//			System.out.println(ipanier.calculerMontantPanier());
+//			ipanier.ajouterProduit(2);
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//			e.printStackTrace();
+//		}
+//		System.out.println("Fin du client");
+//	}
 }
