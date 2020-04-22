@@ -1,6 +1,10 @@
 package controleur;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import rmi.rmiClientProject.Client;
@@ -18,6 +22,7 @@ public class ControleurPrincipal {
 	public void connection() {
 		String[] res = textfield_ip_port.getText().trim().split(":");
 		Client.connection(res[0], res[1]);
+		combobox_temps.setItems(Client.getListe_temps());
 	}
 	
 	@FXML

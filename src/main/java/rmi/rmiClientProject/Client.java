@@ -2,16 +2,22 @@ package rmi.rmiClientProject;
 
 import java.rmi.Naming;
 import java.rmi.Remote;
+import java.util.ArrayList;
 
 import interfaces.IVerbe;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * Client Singleton
  * @author Geoff-Portable
  */
 public class Client {
+	public static IVerbe verbe;
 
 	private static Client client;
+	
+	private static ObservableList<String> liste_temps = null;
 
 	/**
 	 * Renvoie l'instance de client 
@@ -32,19 +38,21 @@ public class Client {
 	public static void connection(String ip, String port) {
 		System.out.println( "Lancement du client!" );
 		try {
-			Remote r = Naming.lookup("rmi://192.168.0.17/Conjuguaison");
-			System.out.println(r);
-			if (r instanceof IVerbe)
-			{
-				String s = ((IVerbe) r).getInformation();
-				System.out.println("chaine renvoyee = "+s);
-			}
+			IVerbe r = (IVerbe)Naming.lookup("rmi://192.168.0.17/Conjuguaison");
+			verbe = r;
+			FXCollections.observableArrayList(verbe.getListeTempsDispo());
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
 		System.out.println("Fin du client");
 	}
+
+	public static ObservableList<String> getListe_temps() {
+		return liste_temps;
+	}
+	
+	
 	
 //	/**
 //	 * Permet d'effectuer des test

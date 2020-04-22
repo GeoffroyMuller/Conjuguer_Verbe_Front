@@ -17,6 +17,8 @@ public interface IVerbe extends Remote{
 
 	public String getManger(String verbe) throws RemoteException;
 	
+	public ArrayList<String> getListeTempsDispo() throws RemoteException;
+	
 	public ArrayList<String> getTraduction(String verbe, String Temps) throws RemoteException;
 
 }
