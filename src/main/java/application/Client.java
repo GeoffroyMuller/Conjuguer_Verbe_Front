@@ -7,7 +7,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import interfaces.remote.IVerbe;
+import interfaces.remote.IConjugueur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -16,7 +16,7 @@ import javafx.collections.ObservableList;
  * @author Geoff-Portable
  */
 public class Client {
-	public static IVerbe verbe;
+	public static IConjugueur conjugueur;
 
 	private static Client client;
 
@@ -43,9 +43,9 @@ public class Client {
 	 */
 	public static void connection(String ip, String port) throws MalformedURLException, RemoteException, NotBoundException {
 		System.out.println( "connexion ... " );
-		IVerbe obj = (IVerbe)Naming.lookup("rmi://"+ip+":"+port+"/Conjuguaison");
-		verbe = obj;
-		liste_temps = FXCollections.observableArrayList(verbe.getListeTempsDispo());
+		IConjugueur obj = (IConjugueur)Naming.lookup("rmi://"+ip+":"+port+"/Conjuguaison");
+		conjugueur = obj;
+		liste_temps = FXCollections.observableArrayList(conjugueur.getlisteModeDispo());
 		System.out.println("client lancé");
 	}
 
@@ -57,8 +57,8 @@ public class Client {
 		return liste_temps;
 	}
 
-	public static IVerbe getVerbe() {
-		return verbe;
+	public static IConjugueur getVerbe() {
+		return conjugueur;
 	}
 
 
