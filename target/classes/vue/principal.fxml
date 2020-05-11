@@ -28,7 +28,7 @@
       <Pane prefHeight="13.0" prefWidth="773.0" style="-fx-background-color: #ACACAC;" BorderPane.alignment="CENTER" />
    </bottom>
    <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D1D1D1;" BorderPane.alignment="CENTER">
+      <Pane fx:id="panel_general" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D1D1D1;" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="textfield_verbe" layoutX="65.0" layoutY="64.0" prefHeight="39.0" prefWidth="271.0" promptText=" Entrez un verbe à l'infinitif" style="-fx-background-color: white;">
                <font>
@@ -45,7 +45,7 @@
                   <Font name="Yu Gothic UI Light" size="39.0" />
                </font>
             </Text>
-            <TextArea fx:id="ta_conjugue" layoutX="193.0" layoutY="124.0" prefHeight="224.0" prefWidth="350.0" style="-fx-background-color: white;" text="hh&#10;hh&#10;hh&#10;hh&#10;hh&#10;hh">
+            <TextArea fx:id="ta_conjugue" layoutX="183.0" layoutY="125.0" prefHeight="224.0" prefWidth="369.0" style="-fx-background-color: white;" text="hh&#10;hh&#10;hh&#10;hh&#10;hh&#10;hh">
                <font>
                   <Font size="24.0" />
                </font>

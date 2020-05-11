@@ -1,10 +1,5 @@
-package rmi.rmiClientProject;
+package application;
 
-import java.rmi.Naming;
-import java.rmi.Remote;
-import java.util.List;
-
-import interfaces.IVerbe;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * Main
+ * Main Client
  */
 public class App extends Application
 {
