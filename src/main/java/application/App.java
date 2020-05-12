@@ -14,7 +14,6 @@ public class App extends Application
     public static void main( String[] args )
     {
     	launch(args);
-    	System.out.println("client lancé");
     }
     
     /**
@@ -27,7 +26,6 @@ public class App extends Application
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/principal.fxml"));
 			Parent root = loader.load();
 			Scene scene = new Scene(root,556,480);
-			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			windows.setResizable(false);
 			
 			windows.setTitle("Client : Conjugue Verbe");
@@ -37,45 +35,4 @@ public class App extends Application
 			e.printStackTrace();
 		}
 	}
-	
-//	/** 
-//	 * un main classique pr test des appels a methodes
-//	 * @param args
-//	 */
-//	 public static void main(String[] args) {
-//		System.out.println( "Lancement du client!" );
-//		try {
-//			String unVerbeTest = "manger";
-//			Remote r = Naming.lookup("rmi://192.168.0.17/Conjuguaison");
-//			System.out.println(r);
-//			if (r instanceof IVerbe)
-//			{
-//				String s = ((IVerbe) r).getInformation();
-//				System.out.println("chaine renvoyee = "+s);
-//				
-//				List<String> verbesConj = ((IVerbe) r).conjuguerFutur(unVerbeTest);
-//				for (String verbeC : verbesConj)
-//				{
-//					System.out.println(verbeC);
-//				}
-//				
-//				verbesConj = ((IVerbe) r).conjuguerPresent(unVerbeTest);
-//				for (String verbeC : verbesConj)
-//				{
-//					System.out.println(verbeC);
-//				}
-//				
-//				verbesConj = ((IVerbe) r).conjuguerPasseComp(unVerbeTest);
-//				for (String verbeC : verbesConj)
-//				{
-//					System.out.println(verbeC);
-//				}
-//			}
-//			
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			e.printStackTrace();
-//		}
-//		System.out.println("Fin du client");
-//	}
 }

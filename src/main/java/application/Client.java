@@ -13,9 +13,9 @@ import javafx.collections.ObservableList;
 
 /**
  * Client Singleton
- * @author Geoff-Portable
  */
 public class Client {
+	
 	public static IConjugueur conjugueur;
 
 	private static Client client;
