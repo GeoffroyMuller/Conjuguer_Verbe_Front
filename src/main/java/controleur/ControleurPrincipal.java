@@ -80,39 +80,6 @@ public class ControleurPrincipal implements Initializable{
 		}
 	}
 	
-	/**
-	 * initialise les comboboxes
-	 */
-	private void init() {
-		try {
-			int indexDefault = 0;
-			
-			ObservableList<String> liste_modes =
-					FXCollections.observableArrayList(
-							Client.getConjugueur().getlisteModesDispo());
-			
-			initCombobox(combobox_modes, liste_modes, indexDefault);
-			
-			Client.getConjugueur().determinerMode(liste_modes.get(indexDefault));
-			
-			ObservableList<String> liste_temps =
-					FXCollections.observableArrayList(
-							Client.getConjugueur().getlisteTempsDispo());
-			
-			initCombobox(combobox_temps, liste_temps, indexDefault);
-			
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-	
-	private void initCombobox(ComboBox<String> combobox, ObservableList<String> liste, int indexDefault) {	
-		combobox.setItems(liste);
-		combobox.getSelectionModel().select(indexDefault);
-	}
-
 	@FXML
 	public void conjuguer() {
 		try {
@@ -127,6 +94,35 @@ public class ControleurPrincipal implements Initializable{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void miseAJourTemps() {
+		//Client.getConjugueur().determinerMode(liste_modes.get(indexDefault));
+		
+		initCombobox(combobox_temps, Client.getListe_temps(), 0);
+	}
+	
+	/**
+	 * initialise les comboboxes
+	 */
+	private void init() {
+		int indexDefault = 0;
+		
+		initCombobox(combobox_modes, Client.getliste_mode(), 0);
+				
+		initCombobox(combobox_temps, Client.getListe_temps(), 0);
+		
+	}
+	
+	/**
+	 * initialise la combobox avec la liste avec pour element par default l'index indexDefault de la liste
+	 * @param combobox a initialise
+	 * @param liste 
+	 * @param indexDefault
+	 */
+	private void initCombobox(ComboBox<String> combobox, ObservableList<String> liste, int indexDefault) {	
+		combobox.setItems(liste);
+		combobox.getSelectionModel().select(indexDefault);
 	}
 
 	/**

@@ -20,7 +20,9 @@ public class Client {
 
 	private static Client client;
 
-//	private static ObservableList<String> liste_temps = null;
+	private static ObservableList<String> liste_mode = null;
+	
+	private static ObservableList<String> liste_temps = null;
 
 	/**
 	 * Renvoie l'instance de client 
@@ -45,22 +47,32 @@ public class Client {
 		System.out.println( "connexion ... " );
 		IConjugueur obj = (IConjugueur)Naming.lookup("rmi://"+ip+":"+port+"/Conjuguaison");
 		conjugueur = obj;
-		//liste_temps = FXCollections.observableArrayList(conjugueur.getlisteModeDispo());
+		liste_mode = FXCollections.observableArrayList(conjugueur.getlisteModesDispo());
+		initListeTemps(liste_mode.get(0));
 		System.out.println("client lancé");
 	}
 
+	public static void initListeTemps(String tagMode) throws RemoteException {
+		conjugueur.determinerMode(tagMode);
+		liste_temps = FXCollections.observableArrayList(conjugueur.getlisteTempsDispo());
+	}
+	
 	/**
 	 * Get une liste des temps disponible
 	 * @return
 	 */
-//	public static ObservableList<String> getListe_temps() {
-//		return liste_temps;
-//	}
+	public static ObservableList<String> getliste_mode() {
+		return liste_mode;
+	}
+
+	public static ObservableList<String> getListe_temps() {
+		return liste_temps;
+	}
 
 	public static IConjugueur getConjugueur() {
 		return conjugueur;
 	}
 
-
+	
 
 }
