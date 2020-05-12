@@ -25,13 +25,9 @@ public class App extends Application
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/principal.fxml"));
 			Parent root = loader.load();
-			Scene scene = new Scene(root,740,450);
+			Scene scene = new Scene(root,556,480);
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			windows.setMaxWidth(790);
-			windows.setMaxHeight(490);
-			
-			windows.setMinWidth(740);
-			windows.setMinHeight(450);
+			windows.setResizable(false);
 			
 			windows.setTitle("Client : Conjugue Verbe");
 			windows.setScene(scene);

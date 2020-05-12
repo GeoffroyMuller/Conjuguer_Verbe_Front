@@ -9,7 +9,7 @@ public interface IConjugueur extends Remote{
 
 	public List<String> conjuguer(String verbe, String temps) throws RemoteException;
 
-	public ArrayList<String> getlisteModeDispo() throws RemoteException;
+	public ArrayList<String> getlisteModesDispo() throws RemoteException;
 	
 	public ArrayList<String> getlisteTempsDispo() throws RemoteException;
 	

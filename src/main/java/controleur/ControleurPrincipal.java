@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import application.Client;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -34,6 +36,8 @@ public class ControleurPrincipal implements Initializable{
 	private TextField textfield_verbe;
 	@FXML
 	private TextArea ta_conjugue;
+	@FXML 
+	private ComboBox<String> combobox_modes;
 	@FXML 
 	private ComboBox<String> combobox_temps;
 	@FXML
@@ -60,10 +64,13 @@ public class ControleurPrincipal implements Initializable{
 	@FXML
 	public void connection() {
 		try {
+			//connexion rmi
 			String[] res = textfield_ip_port.getText().trim().split(":");
 			Client.connection(res[0], res[1]);
-			combobox_temps.setItems(Client.getListe_temps());
-			combobox_temps.getSelectionModel().select(0);
+			
+			//init les combobox
+			init();
+			
 			panel_general.setDisable(false);
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			e.printStackTrace();
@@ -72,12 +79,45 @@ public class ControleurPrincipal implements Initializable{
 					+"\n  exemple : 192.168.43.1:1099");
 		}
 	}
+	
+	/**
+	 * initialise les comboboxes
+	 */
+	private void init() {
+		try {
+			int indexDefault = 0;
+			
+			ObservableList<String> liste_modes =
+					FXCollections.observableArrayList(
+							Client.getConjugueur().getlisteModesDispo());
+			
+			initCombobox(combobox_modes, liste_modes, indexDefault);
+			
+			Client.getConjugueur().determinerMode(liste_modes.get(indexDefault));
+			
+			ObservableList<String> liste_temps =
+					FXCollections.observableArrayList(
+							Client.getConjugueur().getlisteTempsDispo());
+			
+			initCombobox(combobox_temps, liste_temps, indexDefault);
+			
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	private void initCombobox(ComboBox<String> combobox, ObservableList<String> liste, int indexDefault) {	
+		combobox.setItems(liste);
+		combobox.getSelectionModel().select(indexDefault);
+	}
 
 	@FXML
 	public void conjuguer() {
 		try {
 			ArrayList<String> listeVerbe = new ArrayList<String>();
-			listeVerbe = (ArrayList<String>) Client.getVerbe().conjuguer(textfield_verbe.getText(), ""+combobox_temps.getValue());
+			listeVerbe = (ArrayList<String>) Client.getConjugueur().conjuguer(textfield_verbe.getText(), ""+combobox_temps.getValue());
 			System.out.println("res : "+listeVerbe);
 			String res = "";
 			for (String string : listeVerbe) {
