@@ -68,8 +68,8 @@ public class ControleurPrincipal implements Initializable{
 			String[] res = textfield_ip_port.getText().trim().split(":");
 			Client.connection(res[0], res[1]);
 			
-			//init les combobox
-			init();
+			//init les comboboxs
+			initComboboxs();
 			
 			panel_general.setDisable(false);
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
@@ -96,16 +96,16 @@ public class ControleurPrincipal implements Initializable{
 		}
 	}
 	
-	public void miseAJourTemps() {
-		//Client.getConjugueur().determinerMode(liste_modes.get(indexDefault));
-		
+	@FXML
+	public void miseAJourComboTemps() throws RemoteException {
+		Client.selectListeTemps(combobox_modes.getValue());
 		initCombobox(combobox_temps, Client.getListe_temps(), 0);
 	}
 	
 	/**
 	 * initialise les comboboxes
 	 */
-	private void init() {
+	private void initComboboxs() {
 		int indexDefault = 0;
 		
 		initCombobox(combobox_modes, Client.getliste_mode(), 0);

@@ -49,7 +49,7 @@
                   <Font size="24.0" />
                </font>
             </TextArea>
-            <ComboBox fx:id="combobox_modes" layoutX="113.0" layoutY="126.0" prefHeight="39.0" prefWidth="150.0" style="-fx-background-color: #ACACAC;" />
+            <ComboBox fx:id="combobox_modes" onAction="#miseAJourComboTemps" layoutX="113.0" layoutY="126.0" prefHeight="39.0" prefWidth="150.0" style="-fx-background-color: #ACACAC;" />
             <ComboBox fx:id="combobox_temps" layoutX="294.0" layoutY="126.0" prefHeight="39.0" prefWidth="150.0" style="-fx-background-color: #ACACAC;" />
             <Label layoutX="164.0" layoutY="100.0" text="Modes :">
                <font>

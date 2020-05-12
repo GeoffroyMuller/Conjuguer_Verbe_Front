@@ -48,11 +48,11 @@ public class Client {
 		IConjugueur obj = (IConjugueur)Naming.lookup("rmi://"+ip+":"+port+"/Conjuguaison");
 		conjugueur = obj;
 		liste_mode = FXCollections.observableArrayList(conjugueur.getlisteModesDispo());
-		initListeTemps(liste_mode.get(0));
-		System.out.println("client lancé");
+		selectListeTemps(liste_mode.get(0));
+		System.out.println("client connecté");
 	}
 
-	public static void initListeTemps(String tagMode) throws RemoteException {
+	public static void selectListeTemps(String tagMode) throws RemoteException {
 		conjugueur.determinerMode(tagMode);
 		liste_temps = FXCollections.observableArrayList(conjugueur.getlisteTempsDispo());
 	}
